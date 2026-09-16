@@ -32,13 +32,9 @@ defineOptions({ inheritAttrs: false });
 
 .app-btn--nav {
   font-size: 16px;
-  padding-inline: 12px;
+  opacity: 1;
 }
 
-.app-btn--nav:hover {
-  background: white;
-  color: rgb(var(--v-theme-primary));
-}
 .app-btn--link {
   border: 1px solid black;
 }

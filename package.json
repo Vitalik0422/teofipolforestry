@@ -13,5 +13,12 @@
     "build": "npm --workspace api run build && npm --workspace client run build",
     "lint": "npm --workspace api run lint && npm --workspace client run lint",
     "test": "npm --workspace api run test"
+  },
+  "dependencies": {
+    "@vue-leaflet/vue-leaflet": "^0.10.1",
+    "leaflet": "^1.9.4"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.22"
   }
 }

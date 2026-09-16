@@ -1,5 +1,9 @@
 <script setup lang="ts">
-const actions = ['Придбати деревину', 'Перевірити документи', 'Задати питання'];
+const actions = [
+  { title: 'Придбати деревину', link: '/sales' },
+  { title: 'Перевірити документи', link: '/documents' },
+  { title: 'Задати питання', link: '/question' },
+];
 </script>
 
 <template>
@@ -28,14 +32,15 @@ const actions = ['Придбати деревину', 'Перевірити до
     <v-row>
       <v-col>
         <v-list class="pa-0" bg-color="transparent">
-          <template v-for="(action, index) in actions" :key="action">
+          <template v-for="(action, index) in actions" :key="action.title">
             <v-list-item
-              :value="action"
+              :value="action.title"
               class="py-4 px-4 px-0 text-title-large"
               lines="one"
               append-icon="mdi-arrow-top-right"
+              :to="action.link"
             >
-              <v-list-item-title class="text-title-large">{{ action }} </v-list-item-title>
+              <v-list-item-title class="text-title-large">{{ action.title }} </v-list-item-title>
               <template #prepend>
                 <span class="text-secondary pr-10">{{ String(index + 1).padStart(2, '0') }}</span>
               </template>
