@@ -5,7 +5,4 @@ import Home from './home.vue';
 Header;
 </script>
 
-<template>
-  <Header />
-  <Home />
-</template>
+<template></template>
