@@ -6,9 +6,9 @@
       <v-img src="../assets/logo.svg" width="50"></v-img>
     </v-col>
     <v-col class="d-flex flex-column" cols="auto">
-      <span class="text-on-surface text-18">Теофіпольлісвод</span>
+      <span class="text-on-surface text-18">КП "Теофіпольлісвод""</span>
       <span class="text-accent text-label-small"
-        >комунальне лісогосподарське підприємство</span
+        >КОМУНАЛЬНЕ ПІДПРИЄМСВТО "ТЕОФІПОЛЬЛІСВОД" ТЕОФІПОЛЬСКОЇ СЕЛИЩНОЇ РАДИ</span
       >
     </v-col>
   </v-row>
