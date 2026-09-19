@@ -1,0 +1,19 @@
+-- CreateTable
+CREATE TABLE `KV` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `number` INTEGER NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Vid` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `kVId` INTEGER NULL,
+    `coords` JSON NOT NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- AddForeignKey
+ALTER TABLE `Vid` ADD CONSTRAINT `Vid_kVId_fkey` FOREIGN KEY (`kVId`) REFERENCES `KV`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;

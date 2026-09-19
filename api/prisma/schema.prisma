@@ -5,9 +5,23 @@
 
 generator client {
   provider = "prisma-client"
-  output   = "../generated/prisma"
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "mysql"
+}
+
+model KV {
+  id      String @id @default(uuid())
+  number  Int
+  vidInKv Vid[]
+}
+
+model Vid {
+  id      Int  @id @default(autoincrement())
+  kv      KV   @relation(fields: [KVId], references: [id])
+  KVId    String
+  vid_num Float
+  coords  Json
 }
