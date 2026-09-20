@@ -8,18 +8,18 @@
 
 */
 -- DropForeignKey
-ALTER TABLE `vid` DROP FOREIGN KEY `Vid_kVId_fkey`;
+ALTER TABLE `Vid` DROP FOREIGN KEY `Vid_kVId_fkey`;
 
 -- DropIndex
-DROP INDEX `Vid_kVId_fkey` ON `vid`;
+DROP INDEX `Vid_kVId_fkey` ON `Vid`;
 
 -- AlterTable
-ALTER TABLE `kv` DROP PRIMARY KEY,
+ALTER TABLE `KV` DROP PRIMARY KEY,
     MODIFY `id` VARCHAR(191) NOT NULL,
     ADD PRIMARY KEY (`id`);
 
 -- AlterTable
-ALTER TABLE `vid` DROP COLUMN `kVId`,
+ALTER TABLE `Vid` DROP COLUMN `kVId`,
     ADD COLUMN `KVId` VARCHAR(191) NOT NULL,
     ADD COLUMN `vid_num` INTEGER NOT NULL;
 

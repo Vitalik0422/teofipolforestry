@@ -5,4 +5,4 @@
 
 */
 -- AlterTable
-ALTER TABLE `vid` MODIFY `vid_num` DOUBLE NOT NULL;
+ALTER TABLE `Vid` MODIFY `vid_num` DOUBLE NOT NULL;
