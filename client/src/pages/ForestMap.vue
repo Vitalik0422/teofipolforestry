@@ -9,6 +9,7 @@ const center: PointTuple = [49.7268, 26.545]
 const kv = ref<GetKv[]>([])
 const MIN_ZOOM_FOR_LABEL = 15
 const polygons = new Set<Polygon>()
+const loader = ref<boolean>(false)
 let mapRef: LeafletMap | null = null
 
 function onPolygonReady(polygon: Polygon, vidNumber: number, kvNumber: number) {
@@ -63,15 +64,27 @@ function onMapReady(map: LeafletMap) {
 
 onMounted(async () => {
   try {
+    loader.value = true
     const response = await getKV()
+    console.log('after query')
     kv.value = response
   } catch (error) {
     console.log(error)
+  } finally {
+    loader.value = false
   }
 })
 </script>
 <template>
-  <l-map style="height: 1300px" :zoom="13" :center="center" :max-zoom="17" @ready="onMapReady">
+  <v-progress-circular indeterminate color="primary" size="64" v-if="loader"></v-progress-circular>
+  <l-map
+    style="height: 1300px"
+    :zoom="13"
+    :center="center"
+    :max-zoom="17"
+    @ready="onMapReady"
+    v-if="!loader"
+  >
     <l-tile-layer
       url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
       attribution="&copy; OpenStreetMap contributors"
