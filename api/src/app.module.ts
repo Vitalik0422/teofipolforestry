@@ -4,6 +4,8 @@ import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
 import { GeoModule } from './geo/geo.module.js';
 import { PrismaModule } from './prisma/prisma.module.js';
+import { GalleryModule } from './gallery/gallery.module.js';
+import { CloudinaryModule } from './cloudinary/cloudinary.module.js';
 
 export const { ObserveModule, ObserveInstrument } = createObserveModule();
 
@@ -18,6 +20,8 @@ export const { ObserveModule, ObserveInstrument } = createObserveModule();
     }),
     PrismaModule,
     GeoModule,
+    GalleryModule,
+    CloudinaryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

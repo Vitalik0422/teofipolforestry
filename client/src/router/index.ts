@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import About from '@/pages/About.vue'
 import ForestMap from '@/pages/ForestMap.vue'
 import ForestMapService from '@/pages/ForestMapService.vue'
+import GalleryService from '@/pages/GalleryService.vue'
 import Home from '@/pages/home.vue'
 import NotFound from '@/pages/NotFound.vue'
 import SalesForest from '@/pages/SalesForest.vue'
@@ -32,6 +33,7 @@ const router = createRouter({
       path: '/forestMap',
       component: ForestMap,
     },
+    { path: '/gallery/service', component: GalleryService },
   ],
 })
 
