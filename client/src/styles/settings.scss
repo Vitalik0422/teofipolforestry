@@ -7,13 +7,13 @@
 // https://vuetifyjs.com/features/sass-variables/`
 @use 'vuetify/settings' with (
   $color-pack: false,
-  $heading-font-family: "Exo 2', sans-serif",
+  $heading-font-family: 'Exo 2, sans-serif',
   $body-font-family: 'Fira Sans, sans-serif',
   $typography: (
     'display-large': (
       'size': 4.75rem,
       'weight': 700,
-      'font-family': "Exo 2', sans-serif",
+      'font-family': 'Exo 2, sans-serif',
     ),
   )
 );
