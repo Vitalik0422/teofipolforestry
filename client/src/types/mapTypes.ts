@@ -5,9 +5,15 @@ export interface GetKv {
 }
 
 export interface Vid {
+  id?: string
   vid_num: number
   coords: [number, number][] | [number, number][][]
 }
+
+export interface VidFull extends Vid {
+  id: string
+}
+
 export interface UpdateKv {
   number: number
   vidInKv: Vid

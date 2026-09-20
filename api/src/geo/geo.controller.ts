@@ -27,8 +27,9 @@ export class GeoController {
     return this.geoService.update(id, updateGeoDto)
   }
 
-  @Delete(':id')
+  @Delete('vid/:id')
   remove(@Param('id') id: string) {
-    return this.geoService.remove(+id)
+    console.log('click')
+    return this.geoService.removeVid(id)
   }
 }

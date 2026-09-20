@@ -27,23 +27,21 @@ export type AggregateVid = {
 }
 
 export type VidAvgAggregateOutputType = {
-  id: number | null
   vid_num: number | null
 }
 
 export type VidSumAggregateOutputType = {
-  id: number | null
   vid_num: number | null
 }
 
 export type VidMinAggregateOutputType = {
-  id: number | null
+  id: string | null
   KVId: string | null
   vid_num: number | null
 }
 
 export type VidMaxAggregateOutputType = {
-  id: number | null
+  id: string | null
   KVId: string | null
   vid_num: number | null
 }
@@ -58,12 +56,10 @@ export type VidCountAggregateOutputType = {
 
 
 export type VidAvgAggregateInputType = {
-  id?: true
   vid_num?: true
 }
 
 export type VidSumAggregateInputType = {
-  id?: true
   vid_num?: true
 }
 
@@ -174,7 +170,7 @@ export type VidGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
 }
 
 export type VidGroupByOutputType = {
-  id: number
+  id: string
   KVId: string
   vid_num: number
   coords: runtime.JsonValue
@@ -204,7 +200,7 @@ export type VidWhereInput = {
   AND?: Prisma.VidWhereInput | Prisma.VidWhereInput[]
   OR?: Prisma.VidWhereInput[]
   NOT?: Prisma.VidWhereInput | Prisma.VidWhereInput[]
-  id?: Prisma.IntFilter<"Vid"> | number
+  id?: Prisma.StringFilter<"Vid"> | string
   KVId?: Prisma.StringFilter<"Vid"> | string
   vid_num?: Prisma.FloatFilter<"Vid"> | number
   coords?: Prisma.JsonFilter<"Vid">
@@ -221,7 +217,7 @@ export type VidOrderByWithRelationInput = {
 }
 
 export type VidWhereUniqueInput = Prisma.AtLeast<{
-  id?: number
+  id?: string
   AND?: Prisma.VidWhereInput | Prisma.VidWhereInput[]
   OR?: Prisma.VidWhereInput[]
   NOT?: Prisma.VidWhereInput | Prisma.VidWhereInput[]
@@ -247,52 +243,55 @@ export type VidScalarWhereWithAggregatesInput = {
   AND?: Prisma.VidScalarWhereWithAggregatesInput | Prisma.VidScalarWhereWithAggregatesInput[]
   OR?: Prisma.VidScalarWhereWithAggregatesInput[]
   NOT?: Prisma.VidScalarWhereWithAggregatesInput | Prisma.VidScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"Vid"> | number
+  id?: Prisma.StringWithAggregatesFilter<"Vid"> | string
   KVId?: Prisma.StringWithAggregatesFilter<"Vid"> | string
   vid_num?: Prisma.FloatWithAggregatesFilter<"Vid"> | number
   coords?: Prisma.JsonWithAggregatesFilter<"Vid">
 }
 
 export type VidCreateInput = {
+  id?: string
   vid_num: number
   coords: Prisma.JsonNullValueInput | runtime.InputJsonValue
   kv: Prisma.KVCreateNestedOneWithoutVidInKvInput
 }
 
 export type VidUncheckedCreateInput = {
-  id?: number
+  id?: string
   KVId: string
   vid_num: number
   coords: Prisma.JsonNullValueInput | runtime.InputJsonValue
 }
 
 export type VidUpdateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   vid_num?: Prisma.FloatFieldUpdateOperationsInput | number
   coords?: Prisma.JsonNullValueInput | runtime.InputJsonValue
   kv?: Prisma.KVUpdateOneRequiredWithoutVidInKvNestedInput
 }
 
 export type VidUncheckedUpdateInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   KVId?: Prisma.StringFieldUpdateOperationsInput | string
   vid_num?: Prisma.FloatFieldUpdateOperationsInput | number
   coords?: Prisma.JsonNullValueInput | runtime.InputJsonValue
 }
 
 export type VidCreateManyInput = {
-  id?: number
+  id?: string
   KVId: string
   vid_num: number
   coords: Prisma.JsonNullValueInput | runtime.InputJsonValue
 }
 
 export type VidUpdateManyMutationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   vid_num?: Prisma.FloatFieldUpdateOperationsInput | number
   coords?: Prisma.JsonNullValueInput | runtime.InputJsonValue
 }
 
 export type VidUncheckedUpdateManyInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   KVId?: Prisma.StringFieldUpdateOperationsInput | string
   vid_num?: Prisma.FloatFieldUpdateOperationsInput | number
   coords?: Prisma.JsonNullValueInput | runtime.InputJsonValue
@@ -322,7 +321,6 @@ export type VidCountOrderByAggregateInput = {
 }
 
 export type VidAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
   vid_num?: Prisma.SortOrder
 }
 
@@ -339,7 +337,6 @@ export type VidMinOrderByAggregateInput = {
 }
 
 export type VidSumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
   vid_num?: Prisma.SortOrder
 }
 
@@ -394,12 +391,13 @@ export type FloatFieldUpdateOperationsInput = {
 }
 
 export type VidCreateWithoutKvInput = {
+  id?: string
   vid_num: number
   coords: Prisma.JsonNullValueInput | runtime.InputJsonValue
 }
 
 export type VidUncheckedCreateWithoutKvInput = {
-  id?: number
+  id?: string
   vid_num: number
   coords: Prisma.JsonNullValueInput | runtime.InputJsonValue
 }
@@ -434,31 +432,32 @@ export type VidScalarWhereInput = {
   AND?: Prisma.VidScalarWhereInput | Prisma.VidScalarWhereInput[]
   OR?: Prisma.VidScalarWhereInput[]
   NOT?: Prisma.VidScalarWhereInput | Prisma.VidScalarWhereInput[]
-  id?: Prisma.IntFilter<"Vid"> | number
+  id?: Prisma.StringFilter<"Vid"> | string
   KVId?: Prisma.StringFilter<"Vid"> | string
   vid_num?: Prisma.FloatFilter<"Vid"> | number
   coords?: Prisma.JsonFilter<"Vid">
 }
 
 export type VidCreateManyKvInput = {
-  id?: number
+  id?: string
   vid_num: number
   coords: Prisma.JsonNullValueInput | runtime.InputJsonValue
 }
 
 export type VidUpdateWithoutKvInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   vid_num?: Prisma.FloatFieldUpdateOperationsInput | number
   coords?: Prisma.JsonNullValueInput | runtime.InputJsonValue
 }
 
 export type VidUncheckedUpdateWithoutKvInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   vid_num?: Prisma.FloatFieldUpdateOperationsInput | number
   coords?: Prisma.JsonNullValueInput | runtime.InputJsonValue
 }
 
 export type VidUncheckedUpdateManyWithoutKvInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
+  id?: Prisma.StringFieldUpdateOperationsInput | string
   vid_num?: Prisma.FloatFieldUpdateOperationsInput | number
   coords?: Prisma.JsonNullValueInput | runtime.InputJsonValue
 }
@@ -493,7 +492,7 @@ export type $VidPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     kv: Prisma.$KVPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id: number
+    id: string
     KVId: string
     vid_num: number
     coords: runtime.JsonValue
@@ -867,7 +866,7 @@ export interface Prisma__VidClient<T, Null = never, ExtArgs extends runtime.Type
  * Fields of the Vid model
  */
 export interface VidFieldRefs {
-  readonly id: Prisma.FieldRef<"Vid", 'Int'>
+  readonly id: Prisma.FieldRef<"Vid", 'String'>
   readonly KVId: Prisma.FieldRef<"Vid", 'String'>
   readonly vid_num: Prisma.FieldRef<"Vid", 'Float'>
   readonly coords: Prisma.FieldRef<"Vid", 'Json'>

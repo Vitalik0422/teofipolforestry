@@ -71,7 +71,7 @@ onMounted(async () => {
 })
 </script>
 <template>
-  <l-map style="height: 1000px" :zoom="13" :center="center" :max-zoom="17" @ready="onMapReady">
+  <l-map style="height: 1300px" :zoom="13" :center="center" :max-zoom="17" @ready="onMapReady">
     <l-tile-layer
       url="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
       attribution="&copy; OpenStreetMap contributors"

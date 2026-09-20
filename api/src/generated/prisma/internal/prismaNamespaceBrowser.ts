@@ -129,6 +129,7 @@ export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
 export const VidOrderByRelevanceFieldEnum = {
+  id: 'id',
   KVId: 'KVId'
 } as const
 

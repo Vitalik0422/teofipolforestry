@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import KvForm from '@/components/KvForm.vue'
+import KvList from '@/components/KvList.vue'
 import VidForm from '@/components/VidForm.vue'
 import { ref } from 'vue'
 const tab = ref('one')
@@ -13,5 +14,6 @@ const tab = ref('one')
     </v-tabs>
     <KvForm v-if="tab === 'kvform'" />
     <VidForm v-if="tab === 'vidform'" />
+    <KvList v-if="tab === 'kvlist'" />
   </v-container>
 </template>
