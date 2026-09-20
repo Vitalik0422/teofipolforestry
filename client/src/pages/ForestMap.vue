@@ -9,7 +9,7 @@ const center: PointTuple = [49.7268, 26.545]
 const kv = ref<GetKv[]>([])
 const MIN_ZOOM_FOR_LABEL = 15
 const polygons = new Set<Polygon>()
-const loader = ref<boolean>(false)
+const loader = ref<boolean>(true)
 let mapRef: LeafletMap | null = null
 
 function onPolygonReady(polygon: Polygon, vidNumber: number, kvNumber: number) {
@@ -66,7 +66,6 @@ onMounted(async () => {
   try {
     loader.value = true
     const response = await getKV()
-    console.log('after query')
     kv.value = response
   } catch (error) {
     console.log(error)
