@@ -27,3 +27,8 @@ export type KV = Prisma.KVModel
  * 
  */
 export type Vid = Prisma.VidModel
+/**
+ * Model Image
+ * 
+ */
+export type Image = Prisma.ImageModel

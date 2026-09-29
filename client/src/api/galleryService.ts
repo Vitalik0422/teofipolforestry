@@ -7,7 +7,6 @@ export async function addFiles(files: File[]) {
     formData.append('files', file)
   }
 
-  console.log(files)
   const response = await instance.post('/gallery', formData)
   return response.data
 }

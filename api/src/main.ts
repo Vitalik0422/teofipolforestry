@@ -6,7 +6,11 @@ async function bootstrap() {
     instrument: ObserveInstrument,
   })
   app.enableCors({
-    origin: ['https://teofipolforestry-client-tau.vercel.app', 'http://192.168.0.102:3000'],
+    origin: [
+      'https://teofipolforestry-client-tau.vercel.app',
+      'http://192.168.0.102:3000',
+      'http://192.168.100.135:3000',
+    ],
     credentials: true,
   })
   await app.listen(process.env.PORT ?? 3001)

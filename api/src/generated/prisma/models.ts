@@ -10,4 +10,5 @@
  */
 export type * from './models/KV.js'
 export type * from './models/Vid.js'
+export type * from './models/Image.js'
 export type * from './commonInputTypes.js'

@@ -25,3 +25,9 @@ model Vid {
   vid_num Float
   coords  Json
 }
+
+model Image {
+  id            String @id @default(uuid())
+  cloudinary_id String
+  secure_url    String
+}

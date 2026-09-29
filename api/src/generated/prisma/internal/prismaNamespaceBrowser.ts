@@ -52,7 +52,8 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   KV: 'KV',
-  Vid: 'Vid'
+  Vid: 'Vid',
+  Image: 'Image'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -87,6 +88,15 @@ export const VidScalarFieldEnum = {
 } as const
 
 export type VidScalarFieldEnum = (typeof VidScalarFieldEnum)[keyof typeof VidScalarFieldEnum]
+
+
+export const ImageScalarFieldEnum = {
+  id: 'id',
+  cloudinary_id: 'cloudinary_id',
+  secure_url: 'secure_url'
+} as const
+
+export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -134,4 +144,13 @@ export const VidOrderByRelevanceFieldEnum = {
 } as const
 
 export type VidOrderByRelevanceFieldEnum = (typeof VidOrderByRelevanceFieldEnum)[keyof typeof VidOrderByRelevanceFieldEnum]
+
+
+export const ImageOrderByRelevanceFieldEnum = {
+  id: 'id',
+  cloudinary_id: 'cloudinary_id',
+  secure_url: 'secure_url'
+} as const
+
+export type ImageOrderByRelevanceFieldEnum = (typeof ImageOrderByRelevanceFieldEnum)[keyof typeof ImageOrderByRelevanceFieldEnum]
 
