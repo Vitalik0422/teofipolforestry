@@ -1,5 +1,21 @@
 services:
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - db_data:/var/lib/mysql
+
   backend:
+    depends_on:
+      db:
+        condition: service_healthy
     build:
       context: ./api
     environment:
@@ -9,3 +25,13 @@ services:
     ports:
       - '8080:3000'
     restart: unless-stopped
+
+  frontend:
+    build: ./client
+    env_file:
+      - ./client/.env
+    ports:
+      - '8081:80'
+    restart: unless-stopped
+volumes:
+  db_data:
