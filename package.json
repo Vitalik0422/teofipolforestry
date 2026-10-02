@@ -13,8 +13,5 @@
     "build": "npm --workspace api run build && npm --workspace client run build",
     "lint": "npm --workspace api run lint && npm --workspace client run lint",
     "test": "npm --workspace api run test"
-  },
-  "dependencies": {
-    "vue3-carousel": "^0.17.0"
   }
 }
