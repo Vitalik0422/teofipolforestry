@@ -53,7 +53,8 @@ export const AnyNull = runtime.AnyNull
 export const ModelName = {
   KV: 'KV',
   Vid: 'Vid',
-  Image: 'Image'
+  Image: 'Image',
+  Auth: 'Auth'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -97,6 +98,15 @@ export const ImageScalarFieldEnum = {
 } as const
 
 export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
+
+
+export const AuthScalarFieldEnum = {
+  id: 'id',
+  userName: 'userName',
+  password: 'password'
+} as const
+
+export type AuthScalarFieldEnum = (typeof AuthScalarFieldEnum)[keyof typeof AuthScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -153,4 +163,13 @@ export const ImageOrderByRelevanceFieldEnum = {
 } as const
 
 export type ImageOrderByRelevanceFieldEnum = (typeof ImageOrderByRelevanceFieldEnum)[keyof typeof ImageOrderByRelevanceFieldEnum]
+
+
+export const AuthOrderByRelevanceFieldEnum = {
+  id: 'id',
+  userName: 'userName',
+  password: 'password'
+} as const
+
+export type AuthOrderByRelevanceFieldEnum = (typeof AuthOrderByRelevanceFieldEnum)[keyof typeof AuthOrderByRelevanceFieldEnum]
 

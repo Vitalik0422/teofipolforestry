@@ -6,6 +6,8 @@ import { GeoModule } from './geo/geo.module.js';
 import { PrismaModule } from './prisma/prisma.module.js';
 import { GalleryModule } from './gallery/gallery.module.js';
 import { CloudinaryModule } from './cloudinary/cloudinary.module.js';
+import { AuthGateway } from './auth/auth.gateway.js';
+import { AuthModule } from './auth/auth.module.js';
 
 export const { ObserveModule, ObserveInstrument } = createObserveModule();
 
@@ -22,8 +24,9 @@ export const { ObserveModule, ObserveInstrument } = createObserveModule();
     GeoModule,
     GalleryModule,
     CloudinaryModule,
+    AuthModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AuthGateway],
 })
 export class AppModule {}

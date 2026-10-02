@@ -32,3 +32,8 @@ export type Vid = Prisma.VidModel
  * 
  */
 export type Image = Prisma.ImageModel
+/**
+ * Model Auth
+ * 
+ */
+export type Auth = Prisma.AuthModel

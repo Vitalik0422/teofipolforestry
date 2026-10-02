@@ -22,7 +22,7 @@ onMounted(async () => {
   <v-container>
     <Carousel v-bind="carouselConfig">
       <Slide v-for="image in images" :key="image.id">
-        <v-img :src="image.secure_url" height="500" width="500" cover> </v-img
+        <v-img :src="image.secure_url" height="500" cover> </v-img
       ></Slide>
 
       <template #addons>

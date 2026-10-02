@@ -31,3 +31,18 @@ model Image {
   cloudinary_id String
   secure_url    String
 }
+
+model Auth {
+  id            String         @id @default(uuid())
+  userName      String         @unique
+  password      String
+  accessToken   String?
+  refreshTokens RefreshToken[]
+}
+
+model RefreshToken {
+  id     String @id @default(uuid())
+  token  String @unique
+  authId String
+  auth   Auth   @relation(fields: [authId], references: [id])
+}

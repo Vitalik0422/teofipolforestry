@@ -399,7 +399,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   KV: 'KV',
   Vid: 'Vid',
-  Image: 'Image'
+  Image: 'Image',
+  Auth: 'Auth'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -415,7 +416,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "kV" | "vid" | "image"
+    modelProps: "kV" | "vid" | "image" | "auth"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -617,6 +618,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Auth: {
+      payload: Prisma.$AuthPayload<ExtArgs>
+      fields: Prisma.AuthFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AuthFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AuthFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload>
+        }
+        findFirst: {
+          args: Prisma.AuthFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AuthFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload>
+        }
+        findMany: {
+          args: Prisma.AuthFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload>[]
+        }
+        create: {
+          args: Prisma.AuthCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload>
+        }
+        createMany: {
+          args: Prisma.AuthCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.AuthDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload>
+        }
+        update: {
+          args: Prisma.AuthUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload>
+        }
+        deleteMany: {
+          args: Prisma.AuthDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AuthUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.AuthUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthPayload>
+        }
+        aggregate: {
+          args: Prisma.AuthAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAuth>
+        }
+        groupBy: {
+          args: Prisma.AuthGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AuthGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AuthCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AuthCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -683,6 +750,15 @@ export const ImageScalarFieldEnum = {
 export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
 
 
+export const AuthScalarFieldEnum = {
+  id: 'id',
+  userName: 'userName',
+  password: 'password'
+} as const
+
+export type AuthScalarFieldEnum = (typeof AuthScalarFieldEnum)[keyof typeof AuthScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -737,6 +813,15 @@ export const ImageOrderByRelevanceFieldEnum = {
 } as const
 
 export type ImageOrderByRelevanceFieldEnum = (typeof ImageOrderByRelevanceFieldEnum)[keyof typeof ImageOrderByRelevanceFieldEnum]
+
+
+export const AuthOrderByRelevanceFieldEnum = {
+  id: 'id',
+  userName: 'userName',
+  password: 'password'
+} as const
+
+export type AuthOrderByRelevanceFieldEnum = (typeof AuthOrderByRelevanceFieldEnum)[keyof typeof AuthOrderByRelevanceFieldEnum]
 
 
 
@@ -933,6 +1018,7 @@ export type GlobalOmitConfig = {
   kV?: Prisma.KVOmit
   vid?: Prisma.VidOmit
   image?: Prisma.ImageOmit
+  auth?: Prisma.AuthOmit
 }
 
 /* Types for Logging */
