@@ -54,7 +54,8 @@ export const ModelName = {
   KV: 'KV',
   Vid: 'Vid',
   Image: 'Image',
-  Auth: 'Auth'
+  Auth: 'Auth',
+  RefreshToken: 'RefreshToken'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -102,11 +103,21 @@ export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof Im
 
 export const AuthScalarFieldEnum = {
   id: 'id',
-  userName: 'userName',
-  password: 'password'
+  login: 'login',
+  password: 'password',
+  accessToken: 'accessToken'
 } as const
 
 export type AuthScalarFieldEnum = (typeof AuthScalarFieldEnum)[keyof typeof AuthScalarFieldEnum]
+
+
+export const RefreshTokenScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  authId: 'authId'
+} as const
+
+export type RefreshTokenScalarFieldEnum = (typeof RefreshTokenScalarFieldEnum)[keyof typeof RefreshTokenScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -165,11 +176,29 @@ export const ImageOrderByRelevanceFieldEnum = {
 export type ImageOrderByRelevanceFieldEnum = (typeof ImageOrderByRelevanceFieldEnum)[keyof typeof ImageOrderByRelevanceFieldEnum]
 
 
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
 export const AuthOrderByRelevanceFieldEnum = {
   id: 'id',
-  userName: 'userName',
-  password: 'password'
+  login: 'login',
+  password: 'password',
+  accessToken: 'accessToken'
 } as const
 
 export type AuthOrderByRelevanceFieldEnum = (typeof AuthOrderByRelevanceFieldEnum)[keyof typeof AuthOrderByRelevanceFieldEnum]
+
+
+export const RefreshTokenOrderByRelevanceFieldEnum = {
+  id: 'id',
+  token: 'token',
+  authId: 'authId'
+} as const
+
+export type RefreshTokenOrderByRelevanceFieldEnum = (typeof RefreshTokenOrderByRelevanceFieldEnum)[keyof typeof RefreshTokenOrderByRelevanceFieldEnum]
 

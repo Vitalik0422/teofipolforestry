@@ -61,3 +61,8 @@ export type Image = Prisma.ImageModel
  * 
  */
 export type Auth = Prisma.AuthModel
+/**
+ * Model RefreshToken
+ * 
+ */
+export type RefreshToken = Prisma.RefreshTokenModel

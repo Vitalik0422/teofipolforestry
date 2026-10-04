@@ -26,40 +26,46 @@ export type AggregateAuth = {
 
 export type AuthMinAggregateOutputType = {
   id: string | null
-  userName: string | null
+  login: string | null
   password: string | null
+  accessToken: string | null
 }
 
 export type AuthMaxAggregateOutputType = {
   id: string | null
-  userName: string | null
+  login: string | null
   password: string | null
+  accessToken: string | null
 }
 
 export type AuthCountAggregateOutputType = {
   id: number
-  userName: number
+  login: number
   password: number
+  accessToken: number
   _all: number
 }
 
 
 export type AuthMinAggregateInputType = {
   id?: true
-  userName?: true
+  login?: true
   password?: true
+  accessToken?: true
 }
 
 export type AuthMaxAggregateInputType = {
   id?: true
-  userName?: true
+  login?: true
   password?: true
+  accessToken?: true
 }
 
 export type AuthCountAggregateInputType = {
   id?: true
-  userName?: true
+  login?: true
   password?: true
+  accessToken?: true
   _all?: true
 }
 
@@ -137,8 +143,9 @@ export type AuthGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type AuthGroupByOutputType = {
   id: string
-  userName: string
+  login: string
   password: string
+  accessToken: string | null
   _count: AuthCountAggregateOutputType | null
   _min: AuthMinAggregateOutputType | null
   _max: AuthMaxAggregateOutputType | null
@@ -164,30 +171,37 @@ export type AuthWhereInput = {
   OR?: Prisma.AuthWhereInput[]
   NOT?: Prisma.AuthWhereInput | Prisma.AuthWhereInput[]
   id?: Prisma.StringFilter<"Auth"> | string
-  userName?: Prisma.StringFilter<"Auth"> | string
+  login?: Prisma.StringFilter<"Auth"> | string
   password?: Prisma.StringFilter<"Auth"> | string
+  accessToken?: Prisma.StringNullableFilter<"Auth"> | string | null
+  refreshTokens?: Prisma.RefreshTokenListRelationFilter
 }
 
 export type AuthOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  userName?: Prisma.SortOrder
+  login?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  accessToken?: Prisma.SortOrderInput | Prisma.SortOrder
+  refreshTokens?: Prisma.RefreshTokenOrderByRelationAggregateInput
   _relevance?: Prisma.AuthOrderByRelevanceInput
 }
 
 export type AuthWhereUniqueInput = Prisma.AtLeast<{
   id?: string
-  userName?: string
+  login?: string
   AND?: Prisma.AuthWhereInput | Prisma.AuthWhereInput[]
   OR?: Prisma.AuthWhereInput[]
   NOT?: Prisma.AuthWhereInput | Prisma.AuthWhereInput[]
   password?: Prisma.StringFilter<"Auth"> | string
-}, "id" | "userName">
+  accessToken?: Prisma.StringNullableFilter<"Auth"> | string | null
+  refreshTokens?: Prisma.RefreshTokenListRelationFilter
+}, "id" | "login">
 
 export type AuthOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  userName?: Prisma.SortOrder
+  login?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  accessToken?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.AuthCountOrderByAggregateInput
   _max?: Prisma.AuthMaxOrderByAggregateInput
   _min?: Prisma.AuthMinOrderByAggregateInput
@@ -198,50 +212,62 @@ export type AuthScalarWhereWithAggregatesInput = {
   OR?: Prisma.AuthScalarWhereWithAggregatesInput[]
   NOT?: Prisma.AuthScalarWhereWithAggregatesInput | Prisma.AuthScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Auth"> | string
-  userName?: Prisma.StringWithAggregatesFilter<"Auth"> | string
+  login?: Prisma.StringWithAggregatesFilter<"Auth"> | string
   password?: Prisma.StringWithAggregatesFilter<"Auth"> | string
+  accessToken?: Prisma.StringNullableWithAggregatesFilter<"Auth"> | string | null
 }
 
 export type AuthCreateInput = {
   id?: string
-  userName: string
+  login: string
   password: string
+  accessToken?: string | null
+  refreshTokens?: Prisma.RefreshTokenCreateNestedManyWithoutAuthInput
 }
 
 export type AuthUncheckedCreateInput = {
   id?: string
-  userName: string
+  login: string
   password: string
+  accessToken?: string | null
+  refreshTokens?: Prisma.RefreshTokenUncheckedCreateNestedManyWithoutAuthInput
 }
 
 export type AuthUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  userName?: Prisma.StringFieldUpdateOperationsInput | string
+  login?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refreshTokens?: Prisma.RefreshTokenUpdateManyWithoutAuthNestedInput
 }
 
 export type AuthUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  userName?: Prisma.StringFieldUpdateOperationsInput | string
+  login?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  refreshTokens?: Prisma.RefreshTokenUncheckedUpdateManyWithoutAuthNestedInput
 }
 
 export type AuthCreateManyInput = {
   id?: string
-  userName: string
+  login: string
   password: string
+  accessToken?: string | null
 }
 
 export type AuthUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  userName?: Prisma.StringFieldUpdateOperationsInput | string
+  login?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type AuthUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  userName?: Prisma.StringFieldUpdateOperationsInput | string
+  login?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type AuthOrderByRelevanceInput = {
@@ -252,47 +278,157 @@ export type AuthOrderByRelevanceInput = {
 
 export type AuthCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  userName?: Prisma.SortOrder
+  login?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  accessToken?: Prisma.SortOrder
 }
 
 export type AuthMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  userName?: Prisma.SortOrder
+  login?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  accessToken?: Prisma.SortOrder
 }
 
 export type AuthMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
-  userName?: Prisma.SortOrder
+  login?: Prisma.SortOrder
   password?: Prisma.SortOrder
+  accessToken?: Prisma.SortOrder
 }
 
+export type AuthScalarRelationFilter = {
+  is?: Prisma.AuthWhereInput
+  isNot?: Prisma.AuthWhereInput
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
+export type AuthCreateNestedOneWithoutRefreshTokensInput = {
+  create?: Prisma.XOR<Prisma.AuthCreateWithoutRefreshTokensInput, Prisma.AuthUncheckedCreateWithoutRefreshTokensInput>
+  connectOrCreate?: Prisma.AuthCreateOrConnectWithoutRefreshTokensInput
+  connect?: Prisma.AuthWhereUniqueInput
+}
+
+export type AuthUpdateOneRequiredWithoutRefreshTokensNestedInput = {
+  create?: Prisma.XOR<Prisma.AuthCreateWithoutRefreshTokensInput, Prisma.AuthUncheckedCreateWithoutRefreshTokensInput>
+  connectOrCreate?: Prisma.AuthCreateOrConnectWithoutRefreshTokensInput
+  upsert?: Prisma.AuthUpsertWithoutRefreshTokensInput
+  connect?: Prisma.AuthWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AuthUpdateToOneWithWhereWithoutRefreshTokensInput, Prisma.AuthUpdateWithoutRefreshTokensInput>, Prisma.AuthUncheckedUpdateWithoutRefreshTokensInput>
+}
+
+export type AuthCreateWithoutRefreshTokensInput = {
+  id?: string
+  login: string
+  password: string
+  accessToken?: string | null
+}
+
+export type AuthUncheckedCreateWithoutRefreshTokensInput = {
+  id?: string
+  login: string
+  password: string
+  accessToken?: string | null
+}
+
+export type AuthCreateOrConnectWithoutRefreshTokensInput = {
+  where: Prisma.AuthWhereUniqueInput
+  create: Prisma.XOR<Prisma.AuthCreateWithoutRefreshTokensInput, Prisma.AuthUncheckedCreateWithoutRefreshTokensInput>
+}
+
+export type AuthUpsertWithoutRefreshTokensInput = {
+  update: Prisma.XOR<Prisma.AuthUpdateWithoutRefreshTokensInput, Prisma.AuthUncheckedUpdateWithoutRefreshTokensInput>
+  create: Prisma.XOR<Prisma.AuthCreateWithoutRefreshTokensInput, Prisma.AuthUncheckedCreateWithoutRefreshTokensInput>
+  where?: Prisma.AuthWhereInput
+}
+
+export type AuthUpdateToOneWithWhereWithoutRefreshTokensInput = {
+  where?: Prisma.AuthWhereInput
+  data: Prisma.XOR<Prisma.AuthUpdateWithoutRefreshTokensInput, Prisma.AuthUncheckedUpdateWithoutRefreshTokensInput>
+}
+
+export type AuthUpdateWithoutRefreshTokensInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  login?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+export type AuthUncheckedUpdateWithoutRefreshTokensInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  login?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.StringFieldUpdateOperationsInput | string
+  accessToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
+
+/**
+ * Count Type AuthCountOutputType
+ */
+
+export type AuthCountOutputType = {
+  refreshTokens: number
+}
+
+export type AuthCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  refreshTokens?: boolean | AuthCountOutputTypeCountRefreshTokensArgs
+}
+
+/**
+ * AuthCountOutputType without action
+ */
+export type AuthCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AuthCountOutputType
+   */
+  select?: Prisma.AuthCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * AuthCountOutputType without action
+ */
+export type AuthCountOutputTypeCountRefreshTokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RefreshTokenWhereInput
+}
 
 
 export type AuthSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
-  userName?: boolean
+  login?: boolean
   password?: boolean
+  accessToken?: boolean
+  refreshTokens?: boolean | Prisma.Auth$refreshTokensArgs<ExtArgs>
+  _count?: boolean | Prisma.AuthCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["auth"]>
 
 
 
 export type AuthSelectScalar = {
   id?: boolean
-  userName?: boolean
+  login?: boolean
   password?: boolean
+  accessToken?: boolean
 }
 
-export type AuthOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userName" | "password", ExtArgs["result"]["auth"]>
+export type AuthOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "login" | "password" | "accessToken", ExtArgs["result"]["auth"]>
+export type AuthInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  refreshTokens?: boolean | Prisma.Auth$refreshTokensArgs<ExtArgs>
+  _count?: boolean | Prisma.AuthCountOutputTypeDefaultArgs<ExtArgs>
+}
 
 export type $AuthPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Auth"
-  objects: {}
+  objects: {
+    refreshTokens: Prisma.$RefreshTokenPayload<ExtArgs>[]
+  }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
-    userName: string
+    login: string
     password: string
+    accessToken: string | null
   }, ExtArgs["result"]["auth"]>
   composites: {}
 }
@@ -633,6 +769,7 @@ readonly fields: AuthFieldRefs;
  */
 export interface Prisma__AuthClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  refreshTokens<T extends Prisma.Auth$refreshTokensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Auth$refreshTokensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RefreshTokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -663,8 +800,9 @@ export interface Prisma__AuthClient<T, Null = never, ExtArgs extends runtime.Typ
  */
 export interface AuthFieldRefs {
   readonly id: Prisma.FieldRef<"Auth", 'String'>
-  readonly userName: Prisma.FieldRef<"Auth", 'String'>
+  readonly login: Prisma.FieldRef<"Auth", 'String'>
   readonly password: Prisma.FieldRef<"Auth", 'String'>
+  readonly accessToken: Prisma.FieldRef<"Auth", 'String'>
 }
     
 
@@ -681,6 +819,10 @@ export type AuthFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Omit specific fields from the Auth
    */
   omit?: Prisma.AuthOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuthInclude<ExtArgs> | null
   /**
    * Filter, which Auth to fetch.
    */
@@ -700,6 +842,10 @@ export type AuthFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.I
    */
   omit?: Prisma.AuthOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuthInclude<ExtArgs> | null
+  /**
    * Filter, which Auth to fetch.
    */
   where: Prisma.AuthWhereUniqueInput
@@ -717,6 +863,10 @@ export type AuthFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalA
    * Omit specific fields from the Auth
    */
   omit?: Prisma.AuthOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuthInclude<ExtArgs> | null
   /**
    * Filter, which Auth to fetch.
    */
@@ -766,6 +916,10 @@ export type AuthFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.In
    */
   omit?: Prisma.AuthOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuthInclude<ExtArgs> | null
+  /**
    * Filter, which Auth to fetch.
    */
   where?: Prisma.AuthWhereInput
@@ -813,6 +967,10 @@ export type AuthFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Omit specific fields from the Auth
    */
   omit?: Prisma.AuthOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuthInclude<ExtArgs> | null
   /**
    * Filter, which Auths to fetch.
    */
@@ -862,6 +1020,10 @@ export type AuthCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.AuthOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuthInclude<ExtArgs> | null
+  /**
    * The data needed to create a Auth.
    */
   data: Prisma.XOR<Prisma.AuthCreateInput, Prisma.AuthUncheckedCreateInput>
@@ -890,6 +1052,10 @@ export type AuthUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    * Omit specific fields from the Auth
    */
   omit?: Prisma.AuthOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuthInclude<ExtArgs> | null
   /**
    * The data needed to update a Auth.
    */
@@ -931,6 +1097,10 @@ export type AuthUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.AuthOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuthInclude<ExtArgs> | null
+  /**
    * The filter to search for the Auth to update in case it exists.
    */
   where: Prisma.AuthWhereUniqueInput
@@ -957,6 +1127,10 @@ export type AuthDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
    */
   omit?: Prisma.AuthOmit<ExtArgs> | null
   /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuthInclude<ExtArgs> | null
+  /**
    * Filter which Auth to delete.
    */
   where: Prisma.AuthWhereUniqueInput
@@ -977,6 +1151,30 @@ export type AuthDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
+ * Auth.refreshTokens
+ */
+export type Auth$refreshTokensArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the RefreshToken
+   */
+  select?: Prisma.RefreshTokenSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the RefreshToken
+   */
+  omit?: Prisma.RefreshTokenOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.RefreshTokenInclude<ExtArgs> | null
+  where?: Prisma.RefreshTokenWhereInput
+  orderBy?: Prisma.RefreshTokenOrderByWithRelationInput | Prisma.RefreshTokenOrderByWithRelationInput[]
+  cursor?: Prisma.RefreshTokenWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.RefreshTokenScalarFieldEnum | Prisma.RefreshTokenScalarFieldEnum[]
+}
+
+/**
  * Auth without action
  */
 export type AuthDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -988,4 +1186,8 @@ export type AuthDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
    * Omit specific fields from the Auth
    */
   omit?: Prisma.AuthOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AuthInclude<ExtArgs> | null
 }

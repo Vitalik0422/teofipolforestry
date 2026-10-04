@@ -1,7 +1,11 @@
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common'
-import { CreateGeoKvDto } from './dto/create-geo.dto.js'
-import { UpdateGeoDto } from './dto/update-geo.dto.js'
-import { PrismaService } from '../prisma/prisma.service.js'
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
+import { CreateGeoKvDto } from './dto/create-geo.dto.js';
+import { UpdateGeoDto } from './dto/update-geo.dto.js';
+import { PrismaService } from '../prisma/prisma.service.js';
 
 @Injectable()
 export class GeoService {
@@ -11,29 +15,30 @@ export class GeoService {
       where: {
         number: createGeoDto.number,
       },
-    })
+    });
 
-    if (isExistKv) throw new ConflictException(`Квадрат ${createGeoDto.number} вже існує`)
+    if (isExistKv)
+      throw new ConflictException(`Квадрат ${createGeoDto.number} вже існує`);
 
     await this.map.kV.create({
       data: {
         number: createGeoDto.number,
       },
-    })
+    });
 
-    return 'This action adds a new geo'
+    return 'This action adds a new geo';
   }
 
   async findAll() {
     const response = await this.map.kV.findMany({
       include: { vidInKv: true },
-    })
+    });
 
-    return response
+    return response;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} geo`
+    return `This action returns a #${id} geo`;
   }
 
   async update(id: string, updateGeoDto: UpdateGeoDto) {
@@ -42,9 +47,11 @@ export class GeoService {
         vid_num: updateGeoDto.vid_num,
         KVId: id,
       },
-    })
+    });
     if (isExistVid) {
-      throw new ConflictException(`Виділ ${updateGeoDto.vid_num} вже існує у цьому квадраті`)
+      throw new ConflictException(
+        `Виділ ${updateGeoDto.vid_num} вже існує у цьому квадраті`,
+      );
     }
     const response = await this.map.kV.update({
       where: { id },
@@ -57,20 +64,20 @@ export class GeoService {
         },
       },
       include: { vidInKv: true },
-    })
-    return response
+    });
+    return response;
   }
 
   async removeVid(id: string) {
     const isExistVid = await this.map.vid.findFirst({
       where: { id: id },
-    })
+    });
 
     if (!isExistVid) {
-      throw new NotFoundException(`Такого виділу не існує`)
+      throw new NotFoundException(`Такого виділу не існує`);
     }
-    await this.map.vid.delete({ where: { id: id } })
+    await this.map.vid.delete({ where: { id: id } });
 
-    return `Виділ id-${id} видалено`
+    return `Виділ id-${id} видалено`;
   }
 }

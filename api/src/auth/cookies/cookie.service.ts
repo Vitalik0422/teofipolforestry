@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common'
-import { Response } from 'express'
+import { Injectable } from '@nestjs/common';
+import { Response } from 'express';
 
 @Injectable()
 export class CookieService {
@@ -9,7 +9,7 @@ export class CookieService {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
-    })
+    });
   }
   async setAccessTokenCookie(res: Response, token: string) {
     res.cookie('accessToken', token, {
@@ -17,13 +17,13 @@ export class CookieService {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',
-    })
+    });
   }
   async clearRefreshTokenCookie(res: Response) {
-    res.cookie('refreshToken', undefined)
+    res.cookie('refreshToken', undefined);
   }
 
   async clearAccessTokenCookie(res: Response) {
-    res.cookie('refreshToken', undefined)
+    res.cookie('refreshToken', undefined);
   }
 }

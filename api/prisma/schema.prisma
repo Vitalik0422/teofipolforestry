@@ -34,7 +34,7 @@ model Image {
 
 model Auth {
   id            String         @id @default(uuid())
-  userName      String         @unique
+  login         String         @unique
   password      String
   accessToken   String?
   refreshTokens RefreshToken[]
