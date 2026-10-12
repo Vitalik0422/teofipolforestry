@@ -820,8 +820,7 @@ export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof Im
 export const AuthScalarFieldEnum = {
   id: 'id',
   login: 'login',
-  password: 'password',
-  accessToken: 'accessToken'
+  password: 'password'
 } as const
 
 export type AuthScalarFieldEnum = (typeof AuthScalarFieldEnum)[keyof typeof AuthScalarFieldEnum]
@@ -892,19 +891,10 @@ export const ImageOrderByRelevanceFieldEnum = {
 export type ImageOrderByRelevanceFieldEnum = (typeof ImageOrderByRelevanceFieldEnum)[keyof typeof ImageOrderByRelevanceFieldEnum]
 
 
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
 export const AuthOrderByRelevanceFieldEnum = {
   id: 'id',
   login: 'login',
-  password: 'password',
-  accessToken: 'accessToken'
+  password: 'password'
 } as const
 
 export type AuthOrderByRelevanceFieldEnum = (typeof AuthOrderByRelevanceFieldEnum)[keyof typeof AuthOrderByRelevanceFieldEnum]

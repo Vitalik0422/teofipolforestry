@@ -36,13 +36,12 @@ model Auth {
   id            String         @id @default(uuid())
   login         String         @unique
   password      String
-  accessToken   String?
   refreshTokens RefreshToken[]
 }
 
 model RefreshToken {
   id     String @id @default(uuid())
-  token  String @unique
+  token  String @unique @db.VarChar(255)
   authId String
   auth   Auth   @relation(fields: [authId], references: [id])
 }

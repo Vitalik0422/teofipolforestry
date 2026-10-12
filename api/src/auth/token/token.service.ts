@@ -2,11 +2,7 @@ import {Injectable} from '@nestjs/common';
 import {CreateAuthDto} from '../dto/create-auth.dto.js';
 import {JwtService} from '@nestjs/jwt';
 import {PublicUserDto} from '../dto/login-auth.dto.js';
-
-export interface JwtPayload {
-  sub: number;
-  email: string;
-}
+import {JwtPayload} from './types.js';
 
 @Injectable()
 export class TokenService {
@@ -30,6 +26,7 @@ export class TokenService {
     const verifyRefreshToken = await this.jwtService.verifyAsync(token, {
       secret: process.env.JWT_REFRESH_SECRET,
     });
+
     return verifyRefreshToken;
   }
   async verifyAccessToken(token: string): Promise<JwtPayload> {
