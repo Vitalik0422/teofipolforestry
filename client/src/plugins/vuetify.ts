@@ -5,10 +5,10 @@
  */
 
 // Composables
-import { createVuetify } from 'vuetify';
+import { createVuetify } from 'vuetify'
 // Styles
-import '@mdi/font/css/materialdesignicons.css';
-import 'vuetify/styles';
+import '@mdi/font/css/materialdesignicons.css'
+import 'vuetify/styles'
 
 export default createVuetify({
   theme: {
@@ -22,13 +22,14 @@ export default createVuetify({
           'accent': '#469B3E',
           'info': '#00718F',
           'warning': '#FB7E24',
-          'background': '#F2F2F2',
+          'background': '#f4f2ea',
           'surface': '#FFFFFF',
           'on-surface': '#212121',
           'error': '#B00020',
           'success': '#469B3E',
+          'grey': '#8d8d8d',
         },
       },
     },
   },
-});
+})

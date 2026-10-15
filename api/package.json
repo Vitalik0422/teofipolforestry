@@ -8,6 +8,7 @@
   "type": "module",
   "scripts": {
     "build": "nest build",
+    "create-admin": "npm run build && node dist/scripts/create-admin.js",
     "deploy": "nest deploy",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "nest start",

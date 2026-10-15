@@ -26,7 +26,7 @@ export class JwtAuthGuard implements CanActivate {
   }
 
   async extractToken(request: Request): Promise<string | undefined> {
-    if (request.cookies?.access_token) return request.cookies.access_token;
+    if (request.cookies?.accessToken) return request.cookies.accessToken;
 
     const [type, token] = request.headers.authorization?.split(' ') ?? [];
     return type === 'Bearer' ? token : undefined;

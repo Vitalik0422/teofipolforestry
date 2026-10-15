@@ -1,6 +1,4 @@
 import {
-  BadRequestException,
-  ConflictException,
   Injectable,
   NotFoundException,
   UnauthorizedException,
@@ -19,30 +17,6 @@ export class AuthService {
     private readonly tokenService: TokenService,
     private readonly cookieService: CookieService,
   ) {}
-  async register(createAuthDto: CreateAuthDto) {
-    if (!createAuthDto?.login || !createAuthDto?.password) {
-      throw new BadRequestException('Username and password are required');
-    }
-    const userIsExist = await this.prismaService.auth.findFirst({
-      where: {
-        login: createAuthDto.login,
-      },
-    });
-
-    if (userIsExist) throw new ConflictException();
-
-    const hashedPassword = await bcrypt.hash(createAuthDto.password, 10);
-    await this.prismaService.auth.create({
-      data: {
-        ...createAuthDto,
-        password: hashedPassword,
-      },
-      select: {id: true, login: true, password: true},
-    });
-
-    return {message: 'Користувача успішно створено'};
-  }
-
   async login(createAuthDto: CreateAuthDto, res: Response) {
     const userIsExist = await this.prismaService.auth.findFirst({
       where: {
@@ -73,20 +47,26 @@ export class AuthService {
   }
 
   async refresh(req: Request, res: Response) {
-    const {refreshToken} = await req.cookies;
+    const refreshToken = req.cookies?.refreshToken;
     if (!refreshToken)
       throw new UnauthorizedException('Користувач не авторизований');
-    const verifiedToken =
-      await this.tokenService.verifyRefreshToken(refreshToken);
+    let verifiedToken;
+    try {
+      verifiedToken = await this.tokenService.verifyRefreshToken(refreshToken);
+    } catch {
+      throw new UnauthorizedException('Користувач не авторизований');
+    }
 
     if (!verifiedToken)
       throw new UnauthorizedException('Користувач не авторизований');
-    this.cookieService.clearJwtCookie(res);
-    await this.prismaService.refreshToken.delete({
+    const storedToken = await this.prismaService.refreshToken.findUnique({
       where: {
         token: refreshToken,
       },
     });
+
+    if (!storedToken || storedToken.authId !== verifiedToken.id)
+      throw new UnauthorizedException('Користувач не авторизований');
 
     const {id, login} = verifiedToken;
 
@@ -98,16 +78,12 @@ export class AuthService {
       id,
       login,
     });
-    await this.prismaService.auth.update({
-      where: {id: id},
+    await this.prismaService.refreshToken.update({
+      where: {token: refreshToken},
       data: {
-        refreshTokens: {
-          create: {
-            token: refreshToken,
-          },
-        },
+        token: newRefreshToken,
       },
     });
-    this.cookieService.setJwtCookie(res, newAccessToken, newRefreshToken);
+    await this.cookieService.setJwtCookie(res, newRefreshToken, newAccessToken);
   }
 }

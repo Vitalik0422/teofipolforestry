@@ -46,7 +46,7 @@ describe('authGuard', () => {
 
   it('бере  токен з кукісів ', async () => {
     tokenService.verifyAccessToken.mockResolvedValue(user);
-    const req: any = {headers: {}, cookies: {access_token: 'from-cookie'}};
+    const req: any = {headers: {}, cookies: {accessToken: 'from-cookie'}};
     await expect(guard.canActivate(makeContext(req))).resolves.toBe(true);
     expect(tokenService.verifyAccessToken).toHaveBeenCalledWith('from-cookie');
   });

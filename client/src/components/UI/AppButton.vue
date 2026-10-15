@@ -1,19 +1,23 @@
 <script setup lang="ts">
 withDefaults(
   defineProps<{
-    text?: string;
-    variant?: 'default' | 'nav' | 'cta' | 'link' | 'link-secondary';
+    text?: string
+    variant?: 'default' | 'nav' | 'cta' | 'link' | 'link-secondary' | 'submit'
   }>(),
   {
     text: '',
     variant: 'nav',
   },
-);
-defineOptions({ inheritAttrs: false });
+)
+defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <v-btn v-bind="$attrs" :class="['app-btn', `app-btn--${variant}`]" variant="plain">
+  <v-btn
+    v-bind="$attrs"
+    :class="['app-btn', `app-btn--${variant}`]"
+    variant="plain"
+  >
     <slot>{{ text }}</slot>
   </v-btn>
 </template>
@@ -50,5 +54,10 @@ defineOptions({ inheritAttrs: false });
 }
 .app-btn--link-secondary:hover {
   border-bottom: none;
+}
+
+.app-btn--submit {
+  background-color: rgb(var(--v-theme-primary));
+  color: rgb(var(--v-theme-surface));
 }
 </style>
